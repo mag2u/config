@@ -1,0 +1,18 @@
+# see https://docs.helix-editor.com/editor.html
+
+theme = "base16_transparent"
+
+[editor]
+bufferline = "always"
+popup-border = "all"
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.whitespace]
+render = "all"
+
+[editor.soft-wrap]
+enable = true
