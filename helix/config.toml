@@ -3,8 +3,15 @@
 theme = "base16_transparent"
 
 [editor]
+auto-format = false
 bufferline = "always"
 popup-border = "all"
+
+[editor.statusline]
+center = ["version-control"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
 
 [editor.cursor-shape]
 normal = "block"
