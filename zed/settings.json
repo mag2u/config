@@ -1,6 +1,6 @@
 {
     // The name of the Zed theme to use for the UI.
-    // Based on Zed 0.184.10 default settings.
+    // Based on Zed 0.185.13 default settings.
     // `mode` is one of:
     // - "system": Use the theme that corresponds to the system's appearance
     // - "light": Use the theme indicated by the "light" field
@@ -628,7 +628,7 @@
         // Default width of the notification panel.
         "default_width": 440
     },
-    "assistant": {
+    "agent": {
         // Version of this setting.
         "version": "2",
         // Whether the assistant is enabled.
@@ -1001,7 +1001,7 @@
         "mode": "eager",
         // Whether edit predictions are enabled in the assistant panel.
         // This setting has no effect if globally disabled.
-        "enabled_in_assistant": true
+        "enabled_in_text_threads": true
     },
     // Settings specific to journaling
     "journal": {
