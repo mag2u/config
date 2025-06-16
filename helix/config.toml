@@ -4,7 +4,6 @@ theme = "base16_transparent"
 
 [editor]
 auto-format = false
-bufferline = "always"
 popup-border = "all"
 
 [editor.statusline]
