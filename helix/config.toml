@@ -5,6 +5,7 @@ theme = "base16_transparent"
 [editor]
 auto-format = false
 popup-border = "all"
+end-of-line-diagnostics = "hint"
 
 [editor.statusline]
 center = ["version-control"]
@@ -22,3 +23,6 @@ render = "all"
 
 [editor.soft-wrap]
 enable = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
