@@ -1,0 +1,10 @@
+# see https://alacritty.org/config-alacritty.html
+
+[window]
+padding = { x = 10, y = 10 }
+decorations = "Buttonless"
+opacity = 0.9
+blur = true
+
+[font]
+size = 18
