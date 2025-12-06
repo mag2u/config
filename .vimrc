@@ -1,18 +1,8 @@
-syntax on
+syntax enable
+
 set number
+set ruler
 
-let &t_SI = "\e[6 q" " insert  - bar
-let &t_SR = "\e[4 q" " replace - underline
-let &t_EI = "\e[2 q" " normal  - block
-
-let g:currentmode={
-\"n":"NORMAL",
-\"v":"VISUAL",
-\"V":"V-LINE",
-\"i":"INSERT",
-\"R":"REPLACE",
-\"c":"COMMAND"
-\}
-set noshowmode
-set laststatus=2 " always show statusline
-set statusline=%{get(g:currentmode,mode(),'UNKNOWN')}
+let &t_EI = "\<Esc>[2 q" " normal  - block
+let &t_SI = "\<Esc>[6 q" " insert  - bar
+let &t_SR = "\<Esc>[4 q" " replace - underline
