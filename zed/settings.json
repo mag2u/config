@@ -62,5 +62,5 @@ ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
     "button": false
   },
   // Other
-  "restore_on_startup": "none"
+  "restore_on_startup": "empty_tab"
 }
