@@ -28,6 +28,8 @@ ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
   "preferred_line_length": 120,
   "scrollbar": { "axes": { "horizontal": false } },
 
+  "diff_view_style": "unified",
+
   "toolbar": { "breadcrumbs": false, "quick_actions": false },
   "tab_bar": { "show_nav_history_buttons": false, "show_tab_bar_buttons": false },
 
