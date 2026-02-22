@@ -1,66 +1,41 @@
 /*
 https://zed.dev/docs
+https://zed.dev/docs/reference/all-settings
 
-Setup zed cli in user space on Mac OS
+Setup zed cli in user space on Mac OS:
 ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
 */
 {
-  // Can be shared
-  // Disable auto updates and telemetry
+  "vim_mode": true, // https://zed.dev/docs/vim
+
   "auto_update": false,
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  // Font sizes
-  "ui_font_size": 18.0,
-  "buffer_font_size": 18.0,
-  "agent_ui_font_size": 18.0,
-  "agent_buffer_font_size": 18.0,
-  // Top bar
-  "title_bar": {
-    "show_sign_in": false
-  },
-  "tab_bar": {
-    "show": false
-  },
-  "toolbar": {
-    "quick_actions": false
-  },
-  // Editor
-  "vim_mode": true,
+  "telemetry": { "diagnostics": false, "metrics": false },
+
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "agent_ui_font_size": 18,
+  "agent_buffer_font_size": 18,
+  "terminal": { "font_size": 18, "button": false },
+
+  "format_on_save": "off",
+  "ensure_final_newline_on_save": false,
+  "remove_trailing_whitespace_on_save": false,
+
+  "show_whitespaces": "trailing",
+
   "soft_wrap": "editor_width",
-  "gutter": {
-    "folds": false
-  },
-  "git": {
-    "inline_blame": {
-      "enabled": false
-    }
-  },
-  // Bottom bar
-  "project_panel": {
-    "button": false,
-    "starts_open": false
-  },
-  "git_panel": {
-    "button": false
-  },
-  "outline_panel": {
-    "button": false
-  },
-  "collaboration_panel": {
-    "button": false
-  },
-  "search": {
-    "button": false
-  },
-  "status_bar": {
-    "active_language_button": false
-  },
-  "notification_panel": {
-    "button": false
-  },
-  // Other
-  "restore_on_startup": "empty_tab"
+  "preferred_line_length": 120,
+  "scrollbar": { "axes": { "horizontal": false } },
+
+  "toolbar": { "breadcrumbs": false, "quick_actions": false },
+  "tab_bar": { "show_nav_history_buttons": false, "show_tab_bar_buttons": false },
+
+  "title_bar": { "show_sign_in": false, "show_user_menu": false },
+  "project_panel": { "button": false },
+  "git_panel": { "button": false },
+  "outline_panel": { "button": false },
+  "collaboration_panel": { "button": false },
+  "search": { "button": false },
+  "edit_predictions": { "provider": "none" },
+  "notification_panel": { "button": false },
 }
