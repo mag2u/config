@@ -7,6 +7,7 @@ ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
 */
 {
   "vim_mode": true, // https://zed.dev/docs/vim
+  "restore_on_startup": "launchpad",
 
   "auto_update": false,
   "telemetry": { "diagnostics": false, "metrics": false },
