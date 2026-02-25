@@ -1,11 +1,14 @@
 {
-    "$schema": "https://opencode.ai/config.json",
+  // see https://opencode.ai/docs/config
+  "$schema": "https://opencode.ai/config.json",
 
-    // see https://opencode.ai/docs/config
-    "theme": "system",
-    "default_agent": "plan",
+  "autoupdate": false,
+  "share": "disabled",
+  "experimental": { "openTelemetry": false },
 
-    "autoupdate": false,
-    "share": "disabled",
-    "experimental": {"openTelemetry": false}
+  "theme": "system",
+  "formatter": false,
+  "permission": "ask",
+  "default_agent": "plan",
+  "tui": { "diff_style": "stacked" },
 }
