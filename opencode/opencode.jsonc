@@ -6,9 +6,12 @@
   "share": "disabled",
   "experimental": { "openTelemetry": false },
 
-  "theme": "system",
   "formatter": false,
-  "permission": "ask",
   "default_agent": "plan",
-  "tui": { "diff_style": "stacked" },
+
+  // https://opencode.ai/docs/tools
+  "permission": {
+    "webfetch": "ask",
+    "websearch": "ask",
+  },
 }
