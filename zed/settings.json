@@ -18,8 +18,6 @@ ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
 
   "ui_font_size": 18,
   "buffer_font_size": 18,
-  "agent_ui_font_size": 18,
-  "agent_buffer_font_size": 18,
   "terminal": { "font_size": 18, "button": false },
 
   "format_on_save": "off",
@@ -29,7 +27,6 @@ ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
   "show_whitespaces": "trailing",
 
   "soft_wrap": "editor_width",
-  "preferred_line_length": 120,
   "scrollbar": { "axes": { "horizontal": false } },
 
   "diff_view_style": "unified",
@@ -43,6 +40,4 @@ ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
   "outline_panel": { "button": false },
   "collaboration_panel": { "button": false },
   "search": { "button": false },
-  "edit_predictions": { "provider": "none" },
-  "notification_panel": { "button": false },
 }
