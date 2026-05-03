@@ -6,45 +6,49 @@ Setup zed cli in user space on Mac OS:
 ln -sf ~/Applications/Zed.app/Contents/MacOS/cli ~/.local/bin/zed
 */
 {
+  // general
+  "disable_ai": true,
   "auto_update": false,
   "telemetry": { "diagnostics": false, "metrics": false },
-
-  "disable_ai": true,
-  "session": {"trust_all_worktrees": true},
-
   "restore_on_startup": "launchpad",
-  "vim_mode": true, // https://zed.dev/docs/vim
-  "which_key": { "enabled": true, "delay_ms": 0 },
+  "session": { "trust_all_worktrees": true },
 
+  // appearance
   "theme": "Nstlgy Glass Dark",
   "ui_font_size": 18,
   "buffer_font_size": 18,
+
+  // terminal
   "terminal": {
     "button": false,
     "font_size": 18,
     "cursor_shape": "bar",
-    "blinking": "on",
+    "blinking": "on"
   },
 
+  // editor behavior
+  "vim_mode": true, // https://zed.dev/docs/vim
+  "which_key": { "enabled": true, "delay_ms": 0 },
+  "soft_wrap": "editor_width",
+  "scrollbar": { "axes": { "horizontal": false } },
+  "show_whitespaces": "trailing",
+  "diff_view_style": "unified",
+
+  // save actions
   "format_on_save": "off",
   "ensure_final_newline_on_save": false,
   "remove_trailing_whitespace_on_save": false,
 
-  "show_whitespaces": "trailing",
-
-  "soft_wrap": "editor_width",
-  "scrollbar": { "axes": { "horizontal": false } },
-
-  "diff_view_style": "unified",
-
+  // bars
+  "title_bar": { "show_sign_in": false, "show_user_menu": false },
   "toolbar": { "breadcrumbs": false, "quick_actions": false },
   "tab_bar": { "show_nav_history_buttons": false, "show_tab_bar_buttons": false },
-
-  "title_bar": { "show_sign_in": false, "show_user_menu": false },
   "status_bar": { "active_encoding_button": "enabled" },
-  "project_panel": { "starts_open": false },
-  "git_panel": { "button": false },
+
+  // panels
+  "search": { "button": false },
   "outline_panel": { "button": false },
   "collaboration_panel": { "button": false },
-  "search": { "button": false },
+  "git_panel": { "button": false },
+  "project_panel": { "starts_open": false }
 }
