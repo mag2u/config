@@ -1,0 +1,12 @@
+/*
+https://zed.dev/docs/key-bindings
+https://zed.dev/docs/vim
+*/
+[
+ {
+    "context": "!Terminal && ((Workspace && !Editor) || (Editor && vim_mode == normal))",
+    "bindings": {
+      "space t": "workspace::NewCenterTerminal"
+    }
+  }
+]
