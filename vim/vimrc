@@ -1,15 +1,124 @@
-syntax enable
+" keybyndings
+"
+" "+y - copy into system clipboard
+"
+" autocomplete 
+" 
+" ^n   - anything (^ is CTRL)
+" ^x^n - in file
+" ^x^f - filepath
+"
+" ^n   - next
+" ^p   - previous
+"
+" \w (<leader>w) - goto word  
 
-set number  " lines number
-set ruler   " cursor position
+syntax enable        " enable syntax highlighting and filetype detection
+set number           " lines number
+set ruler            " cursor position
 
-set expandtab      " Expand TAB to spaces
-set tabstop=4      " Number of visual spaces per TAB
-set softtabstop=4  " Number of spaces in tab when editing
-set shiftwidth=4   " Number of spaces to use for autoindent
+" cursor shape
 
-set viminfofile=NONE
+let &t_EI = "\<Esc>[2 q" " normal  - block
+let &t_SI = "\<Esc>[6 q" " insert  - bar
+let &t_SR = "\<Esc>[4 q" " replace - underline
 
-let &t_EI = "\<Esc>[2 q"  " normal  - block
-let &t_SI = "\<Esc>[6 q"  " insert  - bar
-let &t_SR = "\<Esc>[4 q"  " replace - underline
+" TAB as spaces
+
+set expandtab     " expand TAB to spaces
+set tabstop=4     " number of visual spaces per TAB
+set softtabstop=4 " number of spaces in tab when editing
+set shiftwidth=4  " number of spaces to use for autoindent
+
+" search ( see https://github.com/changemewtf/no_plugins )
+
+set path+=**           " search down into subfolders and provide tab-completion for all file-related tasks
+set wildmenu           " show command-line completion choices and all matching files when we tab complete
+set wildoptions+=pum   " show completion matches in a popup menu
+set wildoptions+=fuzzy " use fuzzy matching for command-line completion
+
+set incsearch          " show matches while typing a search
+set hlsearch           " highlight search matches
+set ignorecase         " ignore case unless the pattern contains uppercase letters
+set smartcase          " make searches case-sensitive if the pattern contains uppercase letters
+
+" netrw file browser
+
+let g:netrw_banner=0    " disable banner
+let g:netrw_liststyle=3 " tree view
+
+" goto word ( see https://docs.helix-editor.com/keymap.html#goto-mode )
+" type \w and jump to a visible word by typing its two-character label
+
+if has('textprop')
+  if empty(prop_type_get('VimJumpLabel'))
+    call prop_type_add('VimJumpLabel', {'highlight': 'IncSearch'})
+  endif
+
+  function! s:JumpToVisibleWord() abort
+    " Clear labels left behind by an interrupted previous invocation.
+    call prop_remove({'type': 'VimJumpLabel', 'bufnr': bufnr('%')})
+    let l:alphabet = 'asdfghjklqwertyuiopzxcvbnm'
+    let l:starts = []
+    let l:first = line('w0')
+    let l:last = line('w$')
+
+    for l:lnum in range(l:first, l:last)
+      let l:text = getline(l:lnum)
+      let l:offset = 0
+      while l:offset < strlen(l:text)
+        let l:match = matchstrpos(l:text, '\k\+', l:offset)
+        if l:match[1] < 0
+          break
+        endif
+        let l:col = l:match[1] + 1
+        if l:lnum != line('.') || l:col != col('.')
+          let l:screen = screenpos(win_getid(), l:lnum, l:col)
+          if l:screen.row > 0 && l:screen.col > 0
+            call add(l:starts, [l:lnum, l:col])
+          endif
+        endif
+        let l:offset = l:match[2]
+      endwhile
+    endfor
+
+    if empty(l:starts)
+      echo 'No other visible words'
+      return
+    endif
+
+    let l:labels = []
+    let l:prop_ids = []
+    let l:count = len(l:alphabet)
+    for l:i in range(len(l:starts))
+      let l:label = l:alphabet[l:i / l:count] . l:alphabet[l:i % l:count]
+      call add(l:labels, l:label)
+      call add(l:prop_ids, prop_add(l:starts[l:i][0], l:starts[l:i][1], {
+            \ 'type': 'VimJumpLabel', 'text': l:label . ' '})
+            \ )
+    endfor
+    redraw
+
+    let l:typed = ''
+    try
+      let l:first_key = getcharstr()
+      if l:first_key ==# "\<Esc>" || l:first_key ==# "\<C-c>"
+        return
+      endif
+      let l:typed = l:first_key . getcharstr()
+    finally
+      for l:prop_id in l:prop_ids
+        call prop_remove({'id': l:prop_id, 'bufnr': bufnr('%')})
+      endfor
+      redraw!
+    endtry
+
+    let l:index = index(l:labels, l:typed)
+    if l:index >= 0
+      call cursor(l:starts[l:index][0], l:starts[l:index][1])
+    endif
+  endfunction
+
+  nnoremap <silent> <leader>w :<C-U>call <SID>JumpToVisibleWord()<CR>
+endif
+
